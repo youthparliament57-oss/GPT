@@ -51,3 +51,15 @@ sealed interface BrainResult {
         val invocation: CapabilityInvocation
     ) : BrainResult
 }
+/**
+ * The reasoning provider could not produce a valid result.
+ */
+data class Failure(
+    val reason: String
+) : BrainResult {
+    init {
+        require(reason.isNotBlank()) {
+            "Brain failure reason must not be blank."
+        }
+    }
+}
