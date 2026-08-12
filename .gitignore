@@ -1,0 +1,53 @@
+# ================================
+# JARVIS - Project Git Ignore
+# ================================
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Android
+.externalNativeBuild/
+.cxx/
+captures/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Kotlin
+.kotlin/
+
+# Local configuration
+local.properties
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# API keys / credentials
+secrets.properties
+google-services.json
+*.keystore
+*.jks
+
+# Generated files
+generated/
+out/
+tmp/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary/editor files
+*.swp
+*.swo
+*~
