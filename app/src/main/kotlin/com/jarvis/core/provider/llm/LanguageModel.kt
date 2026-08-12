@@ -1,5 +1,8 @@
 package com.jarvis.core.provider.llm
 
+import com.jarvis.core.capability.CapabilityArguments
+import com.jarvis.core.capability.CapabilityInvocation
+
 /**
  * Provider-independent contract for language-model interaction.
  *
@@ -63,13 +66,16 @@ enum class ModelRole {
 
 /**
  * Result returned by a language-model implementation.
+ *
+ * A model can either provide a final response or request execution
+ * of a JARVIS capability.
  */
 sealed interface LanguageModelResult {
 
     /**
-     * The provider successfully generated a response.
+     * The model generated a final response for the user.
      */
-    data class Success(
+    data class FinalResponse(
         val text: String
     ) : LanguageModelResult {
         init {
@@ -80,7 +86,15 @@ sealed interface LanguageModelResult {
     }
 
     /**
-     * The provider could not generate a response.
+     * The model decided that a capability must be executed before
+     * a final response can be produced.
+     */
+    data class CapabilityRequest(
+        val invocation: CapabilityInvocation
+    ) : LanguageModelResult
+
+    /**
+     * The provider could not generate a valid result.
      */
     data class Failure(
         val reason: String
