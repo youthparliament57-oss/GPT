@@ -1,27 +1,23 @@
 plugins {
-kotlin("jvm")
-application
+    kotlin("jvm")
+    application
 }
 
 group = "com.jarvis"
 version = "0.1.0"
 
-repositories {
-mavenCentral()
-}
-
 kotlin {
-jvmToolchain(21)
+    jvmToolchain(21)
 }
 
 application {
-mainClass.set("com.jarvis.core.application.JarvisApplicationKt")
+    mainClass.set("com.jarvis.core.application.JarvisApplicationKt")
 }
 
 dependencies {
-testImplementation(kotlin("test"))
+    testImplementation(kotlin("test"))
 }
 
 tasks.test {
-useJUnitPlatform()
+    useJUnitPlatform()
 }
